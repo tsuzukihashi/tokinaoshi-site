@@ -54,3 +54,9 @@ footer.site { border-top: 1px solid var(--line); margin-top: 64px; padding: 28px
 footer.site a { color: var(--sub); margin-right: 14px; }
 .qid { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; background: var(--card); border: 1px solid var(--line);
   border-radius: 8px; padding: 2px 8px; }
+/* 端末の言語に合うほうだけ見せる（build.py が両方を1ページに入れる） */
+html[lang="ja"] [data-l="en"], html[lang="en"] [data-l="ja"] { display: none; }
+[lang="en"] { line-height: 1.65; }
+[lang="en"] h1 { line-height: 1.2; }
+[lang="en"] nav.site a { font-size: 13px; margin-left: 10px; }
+header.site .wrap { flex-wrap: wrap; row-gap: 0; }

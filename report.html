@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" data-title-ja="問題の誤りを知らせる - ときなおし" data-title-en="Report a Mistake - Tokinaoshi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){var l=navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||"ja"],p="en";for(var i=0;i<l.length;i++){var c=String(l[i]).toLowerCase();if(c.indexOf("ja")===0){p="ja";break}if(c.indexOf("en")===0){p="en";break}}var d=document.documentElement;d.lang=p;var t=d.getAttribute("data-title-"+p);if(t){document.title=t}})();</script>
 <title>問題の誤りを知らせる - ときなおし</title>
-<meta name="description" content="ときなおしの問題・解説の誤りを知らせるページ。">
+<meta name="description" content="ときなおしの問題・解説の誤りを知らせるページ。 / Report a mistake in a Tokinaoshi question or explanation.">
 <meta property="og:title" content="問題の誤りを知らせる - ときなおし">
 <meta property="og:description" content="ときなおしの問題・解説の誤りを知らせるページ。">
 <meta property="og:type" content="website">
@@ -15,6 +16,7 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div data-l="ja" lang="ja">
 <header class="site"><div class="wrap">
 <a class="brand" href="./"><img src="assets/icon.png" alt="" width="32" height="32">ときなおし</a>
 <nav class="site"><a href="./">紹介</a><a href="terms.html">利用規約</a><a href="privacy.html">プライバシー</a><a href="./#contact">お問い合わせ</a></nav>
@@ -24,26 +26,59 @@
 <p class="eyebrow">REPORT</p>
 <h1>問題の誤りを知らせる</h1>
 <p>知らせてくださって、ありがとうございます。答え・解説・誤字など、気づいたことをメールで送ってください。確かめて、次の版で直します。</p>
-<p>問題の番号：<span class="qid" id="qid">（番号なし）</span></p>
-<p><a class="cta" id="mail" href="mailto:ryo.tsuzukihashi@tsuzukit.com">メールで知らせる</a></p>
+<p>問題の番号：<span class="qid" data-qid>（番号なし）</span></p>
+<p><a class="cta" data-mail href="mailto:ryo.tsuzukihashi@tsuzukit.com">メールで知らせる</a></p>
 <p class="note">ボタンを押すと、問題の番号が入ったメールの下書きが開きます。このページは、番号のほかには何も受け取りません。Cookie も使いません。</p>
 <script>
 (function () {
+  var root = document.currentScript.parentElement;
   var q = new URLSearchParams(location.search).get("q") || "";
   if (!/^[A-Za-z0-9-]{1,40}$/.test(q)) { q = ""; }
-  if (q) { document.getElementById("qid").textContent = q; }
+  if (q) { root.querySelector("[data-qid]").textContent = q; }
   var subject = "ときなおし 問題の誤り" + (q ? "（" + q + "）" : "");
   var body = "問題の番号: " + (q || "（分かれば）") + "\n気づいたこと:\n";
-  document.getElementById("mail").href = "mailto:ryo.tsuzukihashi@tsuzukit.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+  root.querySelector("[data-mail]").href = "mailto:ryo.tsuzukihashi@tsuzukit.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
 })();
 </script>
 </article>
-
 </main>
 <footer class="site"><div class="wrap">
 <p><a href="./">紹介</a><a href="terms.html">利用規約</a><a href="privacy.html">プライバシーポリシー</a><a href="report.html">誤りを知らせる</a></p>
 <p>ときなおしは、検定の主催者とは関係のない、個人が作った問題集です。「データサイエンティスト検定」「DS検定」は一般社団法人データサイエンティスト協会の商標です。</p>
 <p>© 2026 TsuzuKit</p>
 </div></footer>
+</div>
+<div data-l="en" lang="en">
+<header class="site"><div class="wrap">
+<a class="brand" href="./"><img src="assets/icon.png" alt="" width="32" height="32">Tokinaoshi</a>
+<nav class="site"><a href="./">About</a><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a><a href="./#contact-en">Contact</a></nav>
+</div></header>
+<main class="wrap">
+<article class="doc">
+<p class="eyebrow">REPORT</p>
+<h1>Report a Mistake</h1>
+<p>Thank you for letting us know. Please email what you noticed: a wrong answer, a wrong explanation, a typo, anything. We will check it and fix it in the next version. You can write in English or Japanese.</p>
+<p>Question number: <span class="qid" data-qid>(none)</span></p>
+<p><a class="cta" data-mail href="mailto:ryo.tsuzukihashi@tsuzukit.com">Report by Email</a></p>
+<p class="note">The button opens an email draft with the question number filled in. This page receives nothing other than the number, and it uses no cookies.</p>
+<script>
+(function () {
+  var root = document.currentScript.parentElement;
+  var q = new URLSearchParams(location.search).get("q") || "";
+  if (!/^[A-Za-z0-9-]{1,40}$/.test(q)) { q = ""; }
+  if (q) { root.querySelector("[data-qid]").textContent = q; }
+  var subject = "Tokinaoshi: mistake in a question" + (q ? " (" + q + ")" : "");
+  var body = "Question number: " + (q || "(if you know it)") + "\nWhat you noticed:\n";
+  root.querySelector("[data-mail]").href = "mailto:ryo.tsuzukihashi@tsuzukit.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+})();
+</script>
+</article>
+</main>
+<footer class="site"><div class="wrap">
+<p><a href="./">About</a><a href="terms.html">Terms of Use</a><a href="privacy.html">Privacy Policy</a><a href="report.html">Report a Mistake</a></p>
+<p>Tokinaoshi is an independent practice set made by an individual and is not affiliated with the exam organizer. “データサイエンティスト検定” and “DS検定” are trademarks of The Japan DataScientist Society.</p>
+<p>© 2026 TsuzuKit</p>
+</div></footer>
+</div>
 </body>
 </html>
