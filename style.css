@@ -29,7 +29,7 @@ h3 { font-size: 17px; margin: 0 0 6px; }
 .cta { display: inline-block; margin-top: 20px; background: var(--vermilion); color: #fff; font-weight: 700; text-decoration: none;
   padding: 14px 26px; border-radius: 16px; }
 .note { font-size: 13px; color: var(--sub); }
-.hero img { width: 100%; max-width: 360px; justify-self: center; border-radius: 28px; }
+.hero img { width: 100%; max-width: 320px; height: auto; justify-self: center; }
 .grid { display: grid; gap: 14px; }
 @media (min-width: 700px) { .grid.two { grid-template-columns: 1fr 1fr; } .grid.three { grid-template-columns: repeat(3, 1fr); } }
 .card { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 20px; }
@@ -59,4 +59,7 @@ html[lang="ja"] [data-l="en"], html[lang="en"] [data-l="ja"] { display: none; }
 [lang="en"] { line-height: 1.65; }
 [lang="en"] h1 { line-height: 1.2; }
 [lang="en"] nav.site a { font-size: 13px; margin-left: 10px; }
-header.site .wrap { flex-wrap: wrap; row-gap: 0; }
+@media (max-width: 480px) { nav.site a { font-size: 12px; margin-left: 8px; } header.site .wrap { gap: 4px; } .brand { gap: 7px; font-size: 15px; } }
+.brand { white-space: nowrap; flex-shrink: 0; }
+/* 幅の狭い画面では、上の帯の「紹介」を出さない（左のアプリ名が同じ行き先） */
+@media (max-width: 480px) { nav.site a:first-child { display: none; } }
