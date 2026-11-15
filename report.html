@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>問題の誤りを知らせる - ときなおし</title>
+<meta name="description" content="ときなおしの問題・解説の誤りを知らせるページ。">
+<meta property="og:title" content="問題の誤りを知らせる - ときなおし">
+<meta property="og:description" content="ときなおしの問題・解説の誤りを知らせるページ。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tokinaoshi.tsuzukit.com/report.html">
+<meta property="og:image" content="https://tokinaoshi.tsuzukit.com/assets/og.jpg">
+<link rel="icon" href="assets/icon.png">
+<link rel="apple-touch-icon" href="assets/icon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+<a class="brand" href="./"><img src="assets/icon.png" alt="" width="32" height="32">ときなおし</a>
+<nav class="site"><a href="./">紹介</a><a href="terms.html">利用規約</a><a href="privacy.html">プライバシー</a><a href="./#contact">お問い合わせ</a></nav>
+</div></header>
+<main class="wrap">
+<article class="doc">
+<p class="eyebrow">REPORT</p>
+<h1>問題の誤りを知らせる</h1>
+<p>知らせてくださって、ありがとうございます。答え・解説・誤字など、気づいたことをメールで送ってください。確かめて、次の版で直します。</p>
+<p>問題の番号：<span class="qid" id="qid">（番号なし）</span></p>
+<p><a class="cta" id="mail" href="mailto:ryo.tsuzukihashi@tsuzukit.com">メールで知らせる</a></p>
+<p class="note">ボタンを押すと、問題の番号が入ったメールの下書きが開きます。このページは、番号のほかには何も受け取りません。Cookie も使いません。</p>
+<script>
+(function () {
+  var q = new URLSearchParams(location.search).get("q") || "";
+  if (!/^[A-Za-z0-9-]{1,40}$/.test(q)) { q = ""; }
+  if (q) { document.getElementById("qid").textContent = q; }
+  var subject = "ときなおし 問題の誤り" + (q ? "（" + q + "）" : "");
+  var body = "問題の番号: " + (q || "（分かれば）") + "\n気づいたこと:\n";
+  document.getElementById("mail").href = "mailto:ryo.tsuzukihashi@tsuzukit.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+})();
+</script>
+</article>
+
+</main>
+<footer class="site"><div class="wrap">
+<p><a href="./">紹介</a><a href="terms.html">利用規約</a><a href="privacy.html">プライバシーポリシー</a><a href="report.html">誤りを知らせる</a></p>
+<p>ときなおしは、検定の主催者とは関係のない、個人が作った問題集です。「データサイエンティスト検定」「DS検定」は一般社団法人データサイエンティスト協会の商標です。</p>
+<p>© 2026 TsuzuKit</p>
+</div></footer>
+</body>
+</html>
